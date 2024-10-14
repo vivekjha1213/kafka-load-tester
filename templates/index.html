@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafka Load Testing</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Kafka Load Testing Tool</h1>
+    
+    <div class="form-section">
+        <h2>Create Directory</h2>
+        <form action="/create-dir/" method="post">
+            <input type="text" name="dir_name" placeholder="Directory Name" required>
+            <button type="submit">Create Directory</button>
+        </form>
+    </div>
+
+    <div class="form-section">
+        <h2>Create or Update File</h2>
+        <form action="/touch-file/" method="post">
+            <input type="text" name="file_name" placeholder="File Name" required>
+            <button type="submit">Create/Update File</button>
+        </form>
+    </div>
+
+    <div class="form-section">
+        <h2>Start Kafka Producer</h2>
+        <form action="/start-producer/" method="post">
+            <input type="text" name="topic" placeholder="Kafka Topic" required>
+            <input type="number" name="num_messages" placeholder="Number of Messages" required>
+            <button type="submit">Start Producing</button>
+        </form>
+    </div>
+
+    <div class="form-section">
+        <h2>Start Kafka Consumer</h2>
+        <form action="/start-consumer/" method="post">
+            <input type="text" name="topic" placeholder="Kafka Topic" required>
+            <button type="submit">Start Consuming</button>
+        </form>
+    </div>
+
+    {% if message %}
+        <div class="message">
+            <p>{{ message }}</p>
+        </div>
+    {% endif %}
+</body>
+</html>
